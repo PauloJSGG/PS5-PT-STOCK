@@ -13,7 +13,8 @@ export enum LinkType {
   CYBERPORT = "CYBERPORT",
   MEO = "MEO",
   NOS = "NOS",
-  ELCORT = "ELCORT"
+  ELCORT = "ELCORT",
+  WORTEN = "WORTEN"
 }
   
 export const links: Link[] = [
@@ -62,5 +63,17 @@ export const links: Link[] = [
     url:
       "https://www.elcorteingles.pt/gaming/A37046605-consola-playstation-5-edicao-digital/",
     type: LinkType.ELCORT,
+  },
+  {
+    name: "WORTEN NORMAL",
+    url:
+      "https://www.worten.pt/gaming/playstation/consolas/ps5/consola-ps5-825gb-7196053",
+    type: LinkType.WORTEN,
+  },
+  {
+    name: "WORTEN DIGITAL",
+    url:
+      "https://www.worten.pt/gaming/playstation/consolas/ps5/consola-ps5-edicao-digital-825-gb-7196054",
+    type: LinkType.WORTEN,
   },
 ];

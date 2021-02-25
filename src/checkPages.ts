@@ -84,6 +84,10 @@ export const checkPages = async () => {
       const addToCartButton = await page.$('[data-event="add_to_cart"][message="Esgotado"]');
       await handleStockAvailability(link, !addToCartButton, page);
     }
+    if (link.type === LinkType.WORTEN) {
+      const addToCartButton = await page.$('.w-product__unavailability-title');
+      await handleStockAvailability(link, !addToCartButton, page);
+    }
 
     await page.close();
   }
