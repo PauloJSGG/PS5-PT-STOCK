@@ -4,7 +4,7 @@ import { sendMessage } from "./sendMessage";
 import formatISO from "date-fns/formatISO";
 import { Page } from "playwright/types/types";
 
-const { chromium } = require("playwright");
+const { firefox } = require("playwright");
 
 const sleep = (ms: number) =>
   new Promise((resolve) => {
@@ -29,7 +29,7 @@ const handleStockAvailability = async (
 };
 
 export const checkPages = async () => {
-  const browser = await chromium.launch({ headless: true });
+  const browser = await firefox.launch({ headless: true });
   const browserContext = await browser.newContext({
     viewport: {
       width: 2560,
@@ -40,7 +40,10 @@ export const checkPages = async () => {
 
   for (const link of links) {
     const page = await browserContext.newPage();
-    await page.goto(link.url);
+    if(link.type === LinkType.MEO || link.type === LinkType.ELCORT )
+      await page.goto(link.url, { waitUntil: 'networkidle' });
+    else
+      await page.goto(link.url);
 
     if (link.type === LinkType.AMAZON) {
       if (link.dataDefaultAsin) {
@@ -61,34 +64,27 @@ export const checkPages = async () => {
     }
 
     if (link.type === LinkType.MEDIAMARKT) {
-      const title = await page.textContent('[data-test="product-title"]');
+      const addToCartButton = await page.$('[id="AddToCart"][disabled="disabled"]');
       await handleStockAvailability(
         link,
-        title.includes("SONY PlayStation 5"),
+        !addToCartButton,
         page
       );
     }
 
-    if (link.type === LinkType.CYBERPORT) {
-      const title = await page.textContent(
-        '[title="Mehr Informationen zum Produkt"]'
-      );
-      await handleStockAvailability(
-        link,
-        title.includes("Sony PlayStation 5"),
-        page
-      );
+    if (link.type === LinkType.MEO) {
+      const addToCartButton = await page.$(".unavailable-txt");
+      await handleStockAvailability(link, !addToCartButton, page);
+    }
+    if (link.type === LinkType.NOS) {
+      const addToCartButton = await page.$('[ng-show="!selectedProductVariant.HasAnyStoreStock && !checkingStoreStocks"]');
+      await handleStockAvailability(link, !addToCartButton, page);
+    }
+    if (link.type === LinkType.ELCORT) {
+      const addToCartButton = await page.$('[data-event="add_to_cart"][message="Esgotado"]');
+      await handleStockAvailability(link, !addToCartButton, page);
     }
 
-    if (link.type === LinkType.GAMESTOP) {
-      const sorryTitle = await page.$('text="Sorry, PS5-Fans."');
-      await handleStockAvailability(link, !sorryTitle, page);
-    }
-
-    if (link.type === LinkType.EURONICS) {
-      const addToCartButton = await page.$("#buybox--button");
-      await handleStockAvailability(link, !!addToCartButton, page);
-    }
     await page.close();
   }
 

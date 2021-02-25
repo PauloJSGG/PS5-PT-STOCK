@@ -11,108 +11,56 @@ export enum LinkType {
   GAMESTOP = "GAMESTOP",
   EURONICS = "EURONICS",
   CYBERPORT = "CYBERPORT",
+  MEO = "MEO",
+  NOS = "NOS",
+  ELCORT = "ELCORT"
 }
-
+  
 export const links: Link[] = [
   {
-    name: "Cyberport",
-    url:
-      "https://www.cyberport.de/tools/search-results.html?autosuggest=false&q=playstation+5",
-    type: LinkType.CYBERPORT,
-  },
-  {
-    name: "Euronics",
-    url:
-      "https://www.euronics.de/spiele-und-konsolen-film-und-musik/spiele-und-konsolen/playstation-5/spielekonsole/playstation-5-konsole-4061856837826",
-    type: LinkType.EURONICS,
-  },
-  {
-    name: "Euronics - Digital",
-    url:
-      "https://www.euronics.de/spiele-und-konsolen-film-und-musik/spiele-und-konsolen/playstation-5/spielekonsole/playstation-5-digital-edition-konsole-4061856837833",
-    type: LinkType.EURONICS,
-  },
-  {
-    name: "Media Markt",
-    url: "https://www.mediamarkt.de/de/search.html?query=playstation%205",
+    name: "Media Markt DIGITAL",
+    url: "https://mediamarkt.pt/products/consola-playstation-5-edicao-digital",
     type: LinkType.MEDIAMARKT,
   },
   {
-    name: "Game Stop",
-    url: "https://www.gamestop.de/PS5",
-    type: LinkType.GAMESTOP,
-  },
-  {
-    name: "Saturn",
-    url: "https://www.saturn.de/de/search.html?query=playstation%205",
+    name: "Media Markt NORMAL",
+    url: "https://mediamarkt.pt/products/consola-playstation-5",
     type: LinkType.MEDIAMARKT,
   },
+  // {
+  //   name: "MEO DIGITAL",
+  //   url:
+  //     "https://loja.meo.pt/Equipamentos/gaming/Sony/Playstation-5-Edicao-Digital?cor=Branco&modo-compra=PromptPayment",
+  //   type: LinkType.MEO,
+  // },
+  // {
+  //   name: "MEO NORMAL",
+  //   url:
+  //     "https://loja.meo.pt/Equipamentos/gaming/Sony/Playstation-5?cor=Branco&modo-compra=PromptPayment",
+  //   type: LinkType.MEO,
+  // },
   {
-    name: "Amazon DE - Digital",
-    url: "https://www.amazon.de/-/en/dp/B08H98GVK8",
-    dataDefaultAsin: "B08H98GVK8",
-    type: LinkType.AMAZON,
-  },
-  {
-    name: "Amazon IT - Digital",
+    name: "NOS NORMAL",
     url:
-      "https://www.amazon.it/Sony-PlayStation-5-Digital-Edition/dp/B08KJF2D25",
-    dataDefaultAsin: "B08KJF2D25",
-    type: LinkType.AMAZON,
+      "https://www.nos.pt/particulares/loja-equipamentos/pages/details.aspx?p=36001",
+    type: LinkType.NOS,
   },
   {
-    name: "Amazon NL - Digital",
+    name: "NOS DIGITAL",
     url:
-      "https://www.amazon.nl/Sony-PlayStation-PlayStation®5-Digital-Edition/dp/B08H98GVK8",
-    dataDefaultAsin: "B08H98GVK8",
-    type: LinkType.AMAZON,
+      "https://www.nos.pt/particulares/loja-equipamentos/pages/details.aspx?p=36002",
+    type: LinkType.NOS,
   },
   {
-    name: "Amazon FR - Digital",
+    name: "ELCORT NORMAL",
     url:
-      "https://www.amazon.fr/PlayStation-Digital-manette-DualSense-Couleur/dp/B08H98GVK8",
-    dataDefaultAsin: "B08H98GVK8",
-    type: LinkType.AMAZON,
+      "https://www.elcorteingles.pt/gaming/A37046604-consola-playstation-5/",
+    type: LinkType.ELCORT,
   },
   {
-    name: "Amazon ES - Digital",
+    name: "ELCORT DIGITAL",
     url:
-      "https://www.amazon.es/Playstation-Consola-PlayStation-5/dp/B08KJF2D25",
-    dataDefaultAsin: "B08KJF2D25",
-    type: LinkType.AMAZON,
-  },
-  {
-    name: "Amazon DE",
-    url: "https://www.amazon.de/-/dp/B08H93ZRK9",
-    dataDefaultAsin: "B08H93ZRK9",
-    type: LinkType.AMAZON,
-  },
-  {
-    name: "Amazon IT",
-    url:
-      "https://www.amazon.it/Sony-PlayStation-5-Digital-Edition/dp/B08KKJ37F7",
-    dataDefaultAsin: "B08KKJ37F7",
-    type: LinkType.AMAZON,
-  },
-  {
-    name: "Amazon NL",
-    url:
-      "https://www.amazon.nl/Sony-PlayStation-PlayStation®5-Digital-Edition/dp/B08H93ZRK9",
-    dataDefaultAsin: "B08H93ZRK9",
-    type: LinkType.AMAZON,
-  },
-  {
-    name: "Amazon FR",
-    url:
-      "https://www.amazon.fr/PlayStation-Digital-manette-DualSense-Couleur/dp/B08H93ZRK9",
-    dataDefaultAsin: "B08H93ZRK9",
-    type: LinkType.AMAZON,
-  },
-  {
-    name: "Amazon ES",
-    url:
-      "https://www.amazon.es/Playstation-Consola-PlayStation-5/dp/B08KKJ37F7",
-    dataDefaultAsin: "B08KKJ37F7",
-    type: LinkType.AMAZON,
+      "https://www.elcorteingles.pt/gaming/A37046605-consola-playstation-5-edicao-digital/",
+    type: LinkType.ELCORT,
   },
 ];
